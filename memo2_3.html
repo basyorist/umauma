@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="reset.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <header>
+        <h1 class="midashi">大阪杯　阪神　芝２０００</h1>
+    </header>
+    <main>
+        <!-- レース結果URL ボタン-->
+        <div class="btn">
+            <div>
+                <button class="btn1"
+                    onclick="location.href='https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202301081120230219/53'">レース結果</button>
+            </div>
+
+
+
+        </div>
+        <!-- フォーム -->
+        <div class="width">
+            <form action="form-wrap">
+                <dl class="form_inner">
+                    <!-- 勝敗 -->
+                    <dt class="form_title">結果</dt>
+                    <dd class="form-item">
+                        <label for="win" class="pochi"><input type="radio" name="atari" id="win">的中</label>
+                        <label for="lose" class="pochi"><input type="radio" name="atari" id="lose">ハズレ</label>
+                    </dd>
+                    <!-- 配当金入力 -->
+                    <dt class="form_title">配当金</dt>
+                    <dd class="form-item"><input type="text" name="haitokin" id="prize" class="form-parts"></dd>
+                    <!-- 一口あたりの金額入力 -->
+                    <dt class="form_title">１口購入金額</dt>
+                    <dd class="form-item"><input type="text" name="hitokuchi" id="betmoney" class="form-parts"></dd>
+                    <!-- 口数の入力 -->
+                    <dt class="form_title">口数</dt>
+                    <dd class="form-item"><input type="text" name="kuchisu" id="betnumber" class="form-parts"></dd>
+                    <!-- トータル賭け金入力 -->
+                    <dt class="form_title">合計金額</dt>
+                    <dd class="form-item"><input type="text" name="gokei" id="toatlmoney" class="form-parts"></dd>
+                    <!-- ゲットした金額 -->
+                    <dt class="form_title">払い戻し金</dt>
+                    <dd class="form-item"><input type="text" name="harai" id="getmoney" class="form-parts"></dd>
+                    <!-- 収支金額 -->
+                    <dt class="form_title">該当レース収支</dt>
+                    <dd class="form-item"><input type="text" name="syushi" id="balance" class="form-parts"></dd>
+                    <!-- 反省点入力 -->
+                    <dt class="form_title">反省点・参考サイト</dt>
+                    <dd class="form-item"><textarea name="hansei" id="lookback" cols="30" rows="10"
+                            class="form-parts"></textarea></dd>
+
+
+
+                </dl>
+
+            </form>
+        </div>

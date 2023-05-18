@@ -1,0 +1,122 @@
+@charset "utf-8";
+
+/* 全ての要素に対しwidthとheightの中にボーダーとパディングを入れ込む */
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+/* bodyに背景画像を指定 */
+body{
+    background-image: url(img/makibao.jpg);
+    
+}
+/* タイトル */
+header{
+    width: auto;
+    display: flex;
+    background-color: #268300;
+    color: #fff;
+    /* ボックスの高さ */
+    height:120px;
+    /* 文字中央揃え */
+    align-items: center;
+    /* 文字中央揃え */
+    justify-content: center;
+    font-size: 28px;;
+     
+}
+
+a{
+    text-decoration: none;
+    color: #333;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 150px;
+    border-radius: 17px;
+    background-color: #00a8ff;
+    color: aliceblue;
+    transition: 0.3s;
+    margin: 20px;
+}
+.flex{
+    text-align: center;
+    display:flex;
+    font-size: 1.5em;
+    }
+
+
+@media screen  and (min-width: 769px){
+
+.buttons:hover{
+    opacity: 0.3;
+
+}}
+
+
+
+.container{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+
+}
+
+.ray1{
+    background-color: rgb(30, 30, 185);
+    color: gold;
+    font-weight: bold;
+}
+.ray2{
+    background-color: orange;
+    color: rgb(18, 156, 126);
+    font-weight: bold;
+}
+
+.ray3{background-color: rgb(249, 57, 14);
+    color: gold;
+    font-weight: bold;
+}
+
+.ray4{background-color: rgb(224, 132, 201);
+    color: gold;
+    font-weight: bold;
+
+}
+
+.ray6{background-color: rgb(102, 18, 102);
+    color: gold;
+    font-weight: bold;
+
+}
+
+.ray14{background-color: rgb(214, 139, 41);
+    color: gold;
+    font-weight: bold;
+
+}
+
+.ray15{background-color: rgb(17, 140, 58);
+    color: gold;
+    font-weight: bold;
+
+}
+.ray20{background-color: rgb(237, 239, 189);
+    color: rgb(234, 14, 14);
+    font-weight: bold;
+
+}
+.ray25{background-color: #B69F37;
+    color: black;
+    font-weight: bold;
+
+}
