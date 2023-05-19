@@ -32,9 +32,11 @@
                 <dl class="form_inner">
                     <!-- 勝敗 -->
                     <dt class="form_title">結果</dt>
-                    <dd class="form-item">
-                        <label for="win" class="pochi"><input type="radio" name="atari" id="win">的中</label>
-                        <label for="lose" class="pochi"><input type="radio" name="atari" id="lose">ハズレ</label>
+                    <dd class="form-item" class="radio">
+                        <label for="win" class="pochi"><input type="radio" name="atari" id="win" style="transform: scale(3.0);">
+                            的中</label>
+                        <label for="lose" class="pochi"><input type="radio" name="atari" id="lose"
+                                style="transform: scale(3.0);"> ハズレ</label>
                     </dd>
                     <!-- 配当金入力 -->
                     <dt class="form_title">配当金</dt>
@@ -55,13 +57,31 @@
                     <dt class="form_title">該当レース収支</dt>
                     <dd class="form-item"><input type="text" name="syushi" id="balance" class="form-parts"></dd>
                     <!-- 反省点入力 -->
-                    <dt class="form_title">反省点・参考サイト</dt>
-                    <dd class="form-item"><textarea name="hansei" id="lookback" cols="30" rows="10"
+                    <dt class="form_title">反省点</dt>
+                    <dd class="form-item"><textarea name="hansei" id="lookback" cols="10" rows="5"
                             class="form-parts"></textarea></dd>
-
-
-
+        
+        
+        
                 </dl>
-
+        
+        
             </form>
+        
+        
+        </div>
+        <div class="btn">
+            <button class="btn1" onclick="location.href='memo1.html'">帰 厩 する</button>
+            <script>
+                $(function () {
+                    $('.pochi').on('click', function (event) {
+                        // 既定の動作をキャンセル(今回はinputにcheckedが入るのをキャンセル)
+                        event.preventDefault();
+
+                        // チェック済みの場合はチェックを外し、未チェックの場合はチェックを入れる
+                        let $input = $(this).find('input');
+                        $input.prop('checked', !$input.prop('checked'));
+                    });
+                });
+            </script>
         </div>

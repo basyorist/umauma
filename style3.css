@@ -1,1 +1,12 @@
 @charset "utf-8";
+.title{
+    margin: 0;
+    padding: 0 40px;
+    background-color: #068e0f;
+    color: rgb(252, 250, 251);
+    font-family: 'Yu Gothic', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size:120px;
+    width: auto;
+    height: auto;
+}
+
