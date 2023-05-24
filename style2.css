@@ -39,12 +39,15 @@ body {
     margin: 5px;
     padding: 10px;
     border-radius: 10px;
+   
 
 }
 
-/* ボタン　ホバーしたとき */
+
+/* ボタン　ホバーしたときのアニメーション */
 .btn1:hover {
     opacity: 0.3;
+    
 
 }
 
@@ -61,6 +64,7 @@ body {
 .form-wrap {
     width: auto;
     margin: auto;
+    
 
 
 }
@@ -70,6 +74,7 @@ body {
     margin: 0 40px 0 0;
     font-weight: bold;
     text-align: right;
+    
 
 
 }
@@ -87,6 +92,7 @@ body {
 }
 
 .width {
+    margin: 0 auto;
     padding: 20px 750px;
     background-color: antiquewhite;
     width: auto;
@@ -104,7 +110,7 @@ body {
     -moz-appearance: none;
 }
 
-.input[type*="radio"] {
+/* .input[type*="radio"] {
     margin: 0 10px 0 0;
     border: solid 1px #a0a0a0;
     width: 40px;
@@ -117,10 +123,18 @@ body {
 
 .input[type*="radio"]:checked {
     background-color: #a0a0a0;
-}
+} */
 
+/* ラジオボタンサイズm */
 .pochi {
     margin: 0 40px 0 0;
     font-size: 40px;
 
+}
+
+#win{
+    cursor: pointer;
+}
+#lose{
+    cursor: pointer;
 }
