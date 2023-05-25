@@ -30,12 +30,8 @@
         <div class="width">
             <form action="form-wrap">
                 <dl class="form_inner">
-                    <!-- 勝敗 -->
-                    <dt class="form_title">結果</dt>
-                    <dd class="form-item">
-                        <label for="win" class="pochi"><input type="radio" name="atari" id="win">的中</label>
-                        <label for="lose" class="pochi"><input type="radio" name="atari" id="lose">ハズレ</label>
-                    </dd>
+        
+        
                     <!-- 配当金入力 -->
                     <dt class="form_title">配当金</dt>
                     <dd class="form-item"><input type="text" name="haitokin" id="prize" class="form-parts"></dd>
@@ -48,6 +44,17 @@
                     <!-- トータル賭け金入力 -->
                     <dt class="form_title">合計金額</dt>
                     <dd class="form-item"><input type="text" name="gokei" id="toatlmoney" class="form-parts"></dd>
+        
+                    <!-- 勝敗 -->
+                    <dt class="form_title">結果</dt>
+                    <dd class="form-item" class="radio">
+                        <label for="win" class="pochi"><input type="radio" name="atari" id="win" value="win"
+                                style="transform: scale(3.0);">
+                            的中</label>
+                        <label for="lose" class="pochi"><input type="radio" name="atari" id="lose" value="lose"
+                                style="transform: scale(3.0);"> ハズレ</label>
+        
+                    </dd>
                     <!-- ゲットした金額 -->
                     <dt class="form_title">払い戻し金</dt>
                     <dd class="form-item"><input type="text" name="harai" id="getmoney" class="form-parts"></dd>
@@ -55,13 +62,146 @@
                     <dt class="form_title">該当レース収支</dt>
                     <dd class="form-item"><input type="text" name="syushi" id="balance" class="form-parts"></dd>
                     <!-- 反省点入力 -->
-                    <dt class="form_title">反省点・参考サイト</dt>
-                    <dd class="form-item"><textarea name="hansei" id="lookback" cols="30" rows="10"
+                    <dt class="form_title">反省点</dt>
+                    <dd class="form-item"><textarea name="hansei" id="lookback" cols="10" rows="5"
                             class="form-parts"></textarea></dd>
-
-
-
+        
                 </dl>
-
+        
+        
             </form>
+        
+        
         </div>
+        <div class="btn">
+            <button class="btn1" onclick="location.href='memo1.html'">帰 厩 する</button>
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        
+        <script>
+
+            //１口購入金額と口数に応じて合計金額を計算  
+            const hitokuchi = document.querySelector("input[name=hitokuchi]");
+            const kuchisu = document.querySelector("input[name=kuchisu]");
+            const gokei = document.querySelector("input[name=gokei]");
+            const calc = () => {
+                gokei.value = Number(hitokuchi.value) * Number(kuchisu.value);
+            }
+
+            hitokuchi.addEventListener("keyup", calc, false);
+            kuchisu.addEventListener("keyup", calc, false);
+
+            $('input[name="atari"]').on('change', function () {
+                // 配当金と1口購入金額の値を取得
+
+                let haitokin = $('#prize').val();
+                let hitokuchi = $('#betmoney').val();
+
+                if ($(this).attr('id') === 'win') {
+                    // 払い戻し金の計算と表示
+                    let harai = haitokin * hitokuchi / 100;
+                    $('#getmoney').val(harai);
+                }
+                else {
+                    // ハズレの場合は払い戻し金に0を表示
+                    $('#getmoney').val('0');
+                }
+            });
+
+
+
+
+
+            /**
+           * 数値の3桁カンマ区切り
+           * 入力値をカンマ区切りにして返却
+          * [引数]   numVal: 入力数値
+          * [返却値] String(): カンマ区切りされた文字列
+           */
+            function addFigure(numVal) {
+                // 空の場合そのまま返却
+                if (numVal == '') {
+                    return '';
+                }
+                // 全角から半角へ変換し、既にカンマが入力されていたら事前に削除
+                numVal = toHalfWidth(numVal).replace(/,/g, "").trim();
+                // 数値でなければそのまま返却
+                if (!/^[+|-]?(\d*)(\.\d+)?$/.test(numVal)) {
+                    return numVal;
+                }
+                // 整数部分と小数部分に分割
+                var getmoney = numVal.toString().split('.');
+                // 整数部分を3桁カンマ区切りへ
+                getmoney[0] = Number(getmoney[0]).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                // 小数部分と結合して返却
+                return getmoney.join('.');
+            }
+
+            /**
+             * カンマ外し
+             * 入力値のカンマを取り除いて返却
+             * [引数]   strVal: 半角でカンマ区切りされた数値
+             * [返却値] String(): カンマを削除した数値
+             */
+            function delFigure(strVal) {
+                return strVal.replace(/,/g, "");
+            }
+
+            /**
+             * 全角から半角への変革関数
+             * 入力値の英数記号を半角変換して返却
+             * [引数]   strVal: 入力値
+             * [返却値] String(): 半角変換された文字列
+             */
+            function toHalfWidth(strVal) {
+                // 半角変換
+                var halfVal = strVal.replace(/[！-～]/g,
+                    function (tmpStr) {
+                        // 文字コードをシフト
+                        return String.fromCharCode(tmpStr.charCodeAt(0) - 0xFEE0);
+                    }
+                );
+                return halfVal;
+            }
+
+            /** 
+             * 処理を適用するテキストボックスへのイベント設定
+             * onBlur : カンマ区切り処理実施
+             * onFocus : カンマ削除処理実施
+             */
+            var elm = document.getElementById('getmoney');
+            elm.addEventListener('blur', function () { this.value = addFigure(this.value) }, false);
+            elm.addEventListener('focus', function () { this.value = delFigure(this.value) }, false);
+
+            // ここからチャッピー
+
+            $(document).ready(function () {
+                $('input[name="atari"]').on('change', function () {
+                    // 払い戻し金の計算と表示
+                    let haitokin = parseFloat($('#prize').val());
+                    let hitokuchi = parseFloat($('#betmoney').val());
+                    let getmoney = parseFloat($('#getmoney').val());
+                    let toatlmoney = parseFloat($('#toatlmoney').val());
+
+                    if ($(this).attr('id') === 'win') {
+                        // 払い戻し金の計算と表示
+                        let harai = haitokin * hitokuchi / 100;
+                        $('#getmoney').val(harai);
+                    } else {
+                        // ハズレの場合は払い戻し金に0を表示
+                        $('#getmoney').val('0');
+                    }
+
+                    // 収支金額の計算と表示
+                    let balance = getmoney - toatlmoney;
+                    $('#balance').val(balance);
+                });
+            });
+
+
+        </script>
+        
+        </main>
+        
+        </body>
