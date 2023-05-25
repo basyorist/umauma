@@ -74,8 +74,17 @@
         
         </div>
         <div class="btn">
-            <button class="btn1" onclick="location.href='memo1.html'">帰 厩 する</button>
+            <button class="btn1" id="save">セーブ</button>
+            <button class="btn1" id="clear">クリア</button>
+            <button class="btn1" onclick="location.href='memo1.html'">ホーム </button>
         </div>
+        </div>
+    </div>
+    <!-- 保存とクリアボタン -->
+
+        
+
+
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         
@@ -198,6 +207,69 @@
                     $('#balance').val(balance);
                 });
             });
+
+
+            // 保存のデータ
+            $('#save').on('click',function(){
+                const prize = $('#prize').val();
+                const betmoney = $('#betmoney').val();
+                const betnumber = $('#betnumber').val();
+                const toatlmoney = $('#toatlmoney').val();
+                const getmoney = $('#getmoney').val();
+                const balance = $('#balance').val();
+                const lookback = $('#lookback').val();
+                const data ={
+                    haitokin: prize,
+                    kakekin: betmoney,
+                    kuchisu: betnumber,
+                    gokei: toatlmoney,
+                    harai: getmoney,
+                    syushi:balance,
+                    hansei:lookback,
+                
+                };
+                console.log(data)
+                const json = JSON.stringify(data);
+                console.log(json);
+                localStorage.setItem('memo', json)
+            });
+
+            // クリア途中
+
+            $('#clear').on('click',function(){
+                localStorage.removeItem('memo');
+
+                $('#prize').val('');
+                $('#betmoney').val('');
+                $('#betnumber').val('');
+                $('#toatlmoney').val('');
+                $('#getmoney').val('');
+                $('#balance').val('');
+                $('#lookback').val('');
+            });
+
+            // 取り出す
+            if(localStorage.getItem('memo')){
+                const json =localStorage.getItem('memo');
+                console.log(json);
+                const data = JSON.parse(json);
+                console.log(data);
+
+                $('#prize').val(data.haitokin);
+                $('#betmoney').val(data.kakekin);
+                $('#betnumber').val(data.kuchisu);
+                $('#toatlmoney').val(data.gokei);
+                $('#getmoney').val(data.harai);
+                $('#balance').val(data.syushi);
+                $('#lookback').val(data.hansei);
+
+
+            };
+
+
+
+
+
 
 
         </script>
