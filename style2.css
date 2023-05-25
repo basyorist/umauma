@@ -75,13 +75,14 @@ body {
     font-weight: bold;
     text-align: right;
     
+    
 
 
 }
 
 .form-item {
-    width: 388px;
-    margin: 0 0 32px;
+    width: 450px;
+    margin: 0 0 35px;
 
 
 }
@@ -93,7 +94,7 @@ body {
 
 .width {
     margin: 0 auto;
-    padding: 20px 750px;
+    padding: 20px 700px;
     background-color: antiquewhite;
     width: auto;
 

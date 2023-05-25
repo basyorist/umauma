@@ -92,8 +92,8 @@
            $('input[name="atari"]').on('change', function () {
                 // 配当金と1口購入金額の値を取得
 
-                let haitokin = ($('#prize').val());
-                let hitokuchi = ($('#betmoney').val());
+                let haitokin = $('#prize').val();
+                let hitokuchi = $('#betmoney').val();
 
                 if ($(this).attr('id') === 'win') {
                     // 払い戻し金の計算と表示
@@ -105,8 +105,10 @@
                     $('#getmoney').val('0');
                 }
             });
+          
 
-
+ 
+           
 
             /**
            * 数値の3桁カンマ区切り
@@ -169,8 +171,32 @@
             elm.addEventListener('blur', function () { this.value = addFigure(this.value) }, false);
             elm.addEventListener('focus', function () { this.value = delFigure(this.value) }, false);
 
+            // ここからチャッピー
 
-                // $("#getmoney")blur(function () { this.value = addFigure(this.value) }, false);
+            $(document).ready(function() {
+  $('input[name="atari"]').on('change', function() {
+    // 払い戻し金の計算と表示
+    let haitokin = parseFloat($('#prize').val());
+    let hitokuchi = parseFloat($('#betmoney').val());
+    let getmoney = parseFloat($('#getmoney').val());
+    let toatlmoney = parseFloat($('#toatlmoney').val());
+
+    if ($(this).attr('id') === 'win') {
+      // 払い戻し金の計算と表示
+      let harai = haitokin * hitokuchi / 100;
+      $('#getmoney').val(harai);
+    } else {
+      // ハズレの場合は払い戻し金に0を表示
+      $('#getmoney').val('0');
+    }
+
+    // 収支金額の計算と表示
+    let balance = getmoney - toatlmoney;
+    $('#balance').val(balance);
+  });
+});
+
+            
         </script>
 
     </main>
