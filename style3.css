@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+
+
 .title {
     margin: auto;
     padding: 0 50px;
@@ -19,35 +21,69 @@ body {
 
 
 
-.form_title{
-    font-size: 100px;
+.form_title {
+    font-size: 70px;
     font-weight: bold;
     padding-left: 50px;
 }
 
-.form-parts{
-    
-        width: 1000px;
-        height: 100px;
-        border: solid 8px rgb(87, 113, 97);
-        padding: 20px;
-        appearance: none;
-        font-size: 100px;
-    }
+.form-parts {
 
-.yen{
+    width: 1000px;
+    height: 80px;
+    border: solid 8px rgb(87, 113, 97);
+    padding: 20px;
+    appearance: none;
+    font-size: 100px;
+}
+
+.yen {
     margin-left: 40px;
     font-size: 100px;
-    margin-top:70px
-    
+    margin-top: 70px
 }
 
-.form-mawari{
+.form-mawari {
     margin-top: 40px;
-    margin-left:120px;
+    margin-left: 120px;
+    padding-bottom: 0;
+
 }
 
-.formpp{
-    
-display: flex;
+.formpp {
+
+    display: flex;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.btn {
+
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+
+}
+
+/* ボタンの中身 */
+.btn1 {
+    background-color: green;
+    color: aliceblue;
+    width: auto;
+    height: auto;
+    font-size: 2.0rem;
+    margin: 5px;
+    padding: 15px;
+    border-radius: 10px;
+
+
+}
+
+.btn1:hover {
+    opacity: 0.3;
+    cursor: pointer;
+
+
 }

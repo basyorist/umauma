@@ -47,6 +47,13 @@
             </dl>
             </form>
 
+            <div class="btn">
+
+                <button class="btn1" onclick="location.href='memo1.html'">ホーム </button>
+            </div>
+
+
+
 
             <script>
                 // ローカルストレージから各データを取得
@@ -59,129 +66,148 @@
 
                     const json = localStorage.getItem('memo');
                     console.log(json);
-                    const data = JSON.parse(json);
+                    const data = JSON.parse(json) || { syushi: 0 };
                     console.log(data);
 
                     const json2 = localStorage.getItem('memo2');
                     console.log(json2);
-                    const data2 = JSON.parse(json2);
+                    const data2 = JSON.parse(json2) || { syushi2: 0 };
                     console.log(data2);
 
                     const json3 = localStorage.getItem('memo3');
                     console.log(json3);
-                    const data3 = JSON.parse(json3);
+                    const data3 = JSON.parse(json3) || { syushi3: 0 };
                     console.log(data3);
 
                     const json4 = localStorage.getItem('memo4');
                     console.log(json4);
-                    const data4 = JSON.parse(json4);
+                    const data4 = JSON.parse(json4) || { syushi4: 0 };
                     console.log(data4);
 
                     const json5 = localStorage.getItem('memo5');
                     console.log(json5);
-                    const data5 = JSON.parse(json5);
+                    const data5 = JSON.parse(json5) || { syushi5: 0 };
                     console.log(data5);
 
                     const json6 = localStorage.getItem('memo6');
                     console.log(json6);
-                    const data6 = JSON.parse(json6);
+                    const data6 = JSON.parse(json6) || { syushi6: 0 };
                     console.log(data6);
 
                     const json7 = localStorage.getItem('memo7');
                     console.log(json7);
-                    const data7 = JSON.parse(json7);
+                    const data7 = JSON.parse(json7) || { syushi7: 0 };
                     console.log(data7);
 
                     const json8 = localStorage.getItem('memo8');
                     console.log(json8);
-                    const data8 = JSON.parse(json8);
+                    const data8 = JSON.parse(json8) || { syushi8: 0 };
                     console.log(data8);
 
                     const json9 = localStorage.getItem('memo9');
                     console.log(json9);
-                    const data9 = JSON.parse(json9);
+                    const data9 = JSON.parse(json9) || { syushi9: 0 };
                     console.log(data9);
 
                     const json10 = localStorage.getItem('memo10');
                     console.log(json10);
-                    const data10 = JSON.parse(json10);
+                    const data10 = JSON.parse(json10) || { syushi10: 0 };
                     console.log(data10);
 
                     const json11 = localStorage.getItem('memo11');
                     console.log(json11);
-                    const data11 = JSON.parse(json11);
+                    const data11 = JSON.parse(json11) || { syushi11: 0 };
                     console.log(data11);
 
                     const json12 = localStorage.getItem('memo12');
                     console.log(json12);
-                    const data12 = JSON.parse(json12);
+                    const data12 = JSON.parse(json12) || { syushi12: 0 };
                     console.log(data12);
 
                     const json13 = localStorage.getItem('memo13');
                     console.log(json13);
-                    const data13 = JSON.parse(json13);
+                    const data13 = JSON.parse(json13) || { syushi13: 0 };
                     console.log(data13);
 
                     const json14 = localStorage.getItem('memo14');
                     console.log(json14);
-                    const data14 = JSON.parse(json14);
+                    const data14 = JSON.parse(json14) || { syushi14: 0 };
                     console.log(data14);
 
                     const json15 = localStorage.getItem('memo15');
                     console.log(json15);
-                    const data15 = JSON.parse(json15);
+                    const data15 = JSON.parse(json15) || { syushi15: 0 };
                     console.log(data15);
 
                     const json16 = localStorage.getItem('memo16');
                     console.log(json16);
-                    const data16 = JSON.parse(json16);
+                    const data16 = JSON.parse(json16) || { syushi16: 0 };
                     console.log(data16);
 
                     const json17 = localStorage.getItem('memo17');
                     console.log(json17);
-                    const data17 = JSON.parse(json17);
+                    const data17 = JSON.parse(json17) || { syushi17: 0 };
                     console.log(data17);
 
                     const json18 = localStorage.getItem('memo18');
                     console.log(json18);
-                    const data18 = JSON.parse(json18);
+                    const data18 = JSON.parse(json18) || { syushi18: 0 };
                     console.log(data18);
 
                     const json19 = localStorage.getItem('memo19');
                     console.log(json19);
-                    const data19 = JSON.parse(json19);
+                    const data19 = JSON.parse(json19) || { syushi19: 0 };
                     console.log(data19);
 
                     const json20 = localStorage.getItem('memo20');
                     console.log(json20);
-                    const data20 = JSON.parse(json20);
+                    const data20 = JSON.parse(json20) || { syushi20: 0 };
                     console.log(data20);
 
                     const json21 = localStorage.getItem('memo21');
                     console.log(json21);
-                    const data21 = JSON.parse(json21);
+                    const data21 = JSON.parse(json21) || { syushi21: 0 };
                     console.log(data21);
 
                     const json22 = localStorage.getItem('memo22');
                     console.log(json22);
-                    const data22 = JSON.parse(json22);
+                    const data22 = JSON.parse(json22) || { syushi22: 0 };
                     console.log(data22);
 
                     const json23 = localStorage.getItem('memo23');
                     console.log(json23);
-                    const data23 = JSON.parse(json23);
+                    const data23 = JSON.parse(json23) || { syushi23: 0 };
                     console.log(data23);
 
                     const json24 = localStorage.getItem('memo24');
                     console.log(json24);
-                    const data24 = JSON.parse(json24);
+                    const data24 = JSON.parse(json24) || { syushi24: 0 };
                     console.log(data24);
 
-                    $('#nenkan_syushi')
-                        .val(Number(data.syushi) + Number(data2.syushi2) + Number(data3.syushi3) + Number(data4.syushi4) + Number(data5.syushi5) + Number(data6.syushi6)
-                            + Number(data7.syushi7) + Number(data8.syushi8) + Number(data9.syushi9) + Number(data10.syushi10) + Number(data11.syushi11) + Number(data12.syushi12)
-                            + Number(data13.syushi13) + Number(data14.syushi14) + Number(data15.syushi15) + Number(data16.syushi16) + Number(data17.syushi17) + Number(data18.syushi18)
-                            + Number(data19.syushi19) + Number(data20.syushi20) + Number(data21.syushi21) + Number(data22.syushi22) + Number(data23.syushi23) + Number(data24.syushi24));
+                    // 年間収支を計算し３桁区切りのコンマをつけてnenkan_syushiに表示
+                    const totalSyushi = Number(data.syushi) + Number(data2.syushi2) + Number(data3.syushi3) + Number(data4.syushi4) + Number(data5.syushi5) + Number(data6.syushi6)
+                        + Number(data7.syushi7) + Number(data8.syushi8) + Number(data9.syushi9) + Number(data10.syushi10) + Number(data11.syushi11) + Number(data12.syushi12)
+                        + Number(data13.syushi13) + Number(data14.syushi14) + Number(data15.syushi15) + Number(data16.syushi16) + Number(data17.syushi17) + Number(data18.syushi18)
+                        + Number(data19.syushi19) + Number(data20.syushi20) + Number(data21.syushi21) + Number(data22.syushi22) + Number(data23.syushi23) + Number(data24.syushi24);
+                    const formattedSyushi = totalSyushi.toLocaleString(); // 3桁区切りのコンマ表示
+                    $('#nenkan_syushi').val(formattedSyushi || 0);
+
+                    // 年間払戻金を計算しtoatlHaraiに格納
+                    const toatlHarai = (Number(data.harai) + Number(data2.harai2) + Number(data3.harai3) + Number(data4.harai4) + Number(data5.harai5) + Number(data6.harai6)
+                        + Number(data7.harai7) + Number(data8.harai8) + Number(data9.harai9) + Number(data10.harai10) + Number(data11.harai11) + Number(data12.harai12)
+                        + Number(data13.harai13) + Number(data14.harai14) + Number(data15.harai15) + Number(data16.harai16) + Number(data17.harai17) + Number(data18.harai18)
+                        + Number(data19.harai19) + Number(data20.harai20) + Number(data21.harai21) + Number(data22.harai22) + Number(data23.harai23) + Number(data24.harai24));
+                    console.log(toatlHarai);
+
+                    // 年間賭け金を計算しtoatlKaneに格納
+                    const toatlKane = (Number(data.gokei) + Number(data2.gokei2) + Number(data3.gokei3) + Number(data4.gokei4) + Number(data5.gokei5) + Number(data6.gokei6)
+                        + Number(data7.gokei7) + Number(data8.gokei8) + Number(data9.gokei9) + Number(data10.gokei10) + Number(data11.gokei11) + Number(data12.gokei12)
+                        + Number(data13.gokei13) + Number(data14.gokei14) + Number(data15.gokei15) + Number(data16.gokei16) + Number(data17.gokei17) + Number(data18.gokei18)
+                        + Number(data19.gokei19) + Number(data20.gokei20) + Number(data21.gokei21) + Number(data22.gokei22) + Number(data23.gokei23) + Number(data24.gokei24));
+                    console.log(toatlKane);
+
+                    // 年間回収率を計算しnenkan_kaisyuのフォームに表示
+                    $('#nenkan_kaisyu').val((toatlHarai / toatlKane * 100).toFixed(2));
 
 
                 };
