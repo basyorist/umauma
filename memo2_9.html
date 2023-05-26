@@ -2,7 +2,7 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-9">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style2.css">
@@ -20,7 +20,7 @@
         <div class="btn">
             <div>
                 <button class="btn1"
-                    onclick="location.href='https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202301081120230219/53'">レース結果</button>
+                    onclick="location.href='https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202302101120230521/DF'">レース結果</button>
             </div>
 
 
@@ -30,20 +30,18 @@
         <div class="width">
             <form action="form-wrap">
                 <dl class="form_inner">
-        
-        
                     <!-- 配当金入力 -->
                     <dt class="form_title">配当金</dt>
-                    <dd class="form-item"><input type="text" name="haitokin" id="prize" class="form-parts"></dd>
+                    <dd class="form-item"><input type="text" name="haitokin9" id="prize9" class="form-parts"></dd>
                     <!-- 一口あたりの金額入力 -->
                     <dt class="form_title">１口購入金額</dt>
-                    <dd class="form-item"><input type="text" name="hitokuchi" id="betmoney" class="form-parts"></dd>
+                    <dd class="form-item"><input type="text" name="hitokuchi9" id="betmoney9" class="form-parts"></dd>
                     <!-- 口数の入力 -->
                     <dt class="form_title">口数</dt>
-                    <dd class="form-item"><input type="text" name="kuchisu" id="betnumber" class="form-parts"></dd>
+                    <dd class="form-item"><input type="text" name="kuchisu9" id="betnumber9" class="form-parts"></dd>
                     <!-- トータル賭け金入力 -->
                     <dt class="form_title">合計金額</dt>
-                    <dd class="form-item"><input type="text" name="gokei" id="toatlmoney" class="form-parts"></dd>
+                    <dd class="form-item"><input type="text" name="gokei9" id="toatlmoney9" class="form-parts"></dd>
         
                     <!-- 勝敗 -->
                     <dt class="form_title">結果</dt>
@@ -57,64 +55,64 @@
                     </dd>
                     <!-- ゲットした金額 -->
                     <dt class="form_title">払い戻し金</dt>
-                    <dd class="form-item"><input type="text" name="harai" id="getmoney" class="form-parts"></dd>
+                    <dd class="form-item"><input type="text" name="harai9" id="getmoney9" class="form-parts"></dd>
                     <!-- 収支金額 -->
                     <dt class="form_title">該当レース収支</dt>
-                    <dd class="form-item"><input type="text" name="syushi" id="balance" class="form-parts"></dd>
+                    <dd class="form-item"><input type="text" name="syushi9" id="balance9" class="form-parts"></dd>
                     <!-- 反省点入力 -->
                     <dt class="form_title">反省点</dt>
-                    <dd class="form-item"><textarea name="hansei" id="lookback" cols="10" rows="5"
+                    <dd class="form-item"><textarea name="hansei9" id="lookback9" cols="10" rows="5"
                             class="form-parts"></textarea></dd>
         
                 </dl>
-        
-        
             </form>
         
         
         </div>
-        <div class="btn">
-            <button class="btn1" onclick="location.href='memo1.html'">帰 厩 する</button>
         </div>
+        <!-- セーブ、クリア、ホームボタン -->
+        <div class="btn">
+            <button class="btn1" id="save">セーブ</button>
+            <button class="btn1" id="clear">クリア</button>
+            <button class="btn1" onclick="location.href='memo1.html'">ホーム </button>
+        </div>
+        
+        <!-- 保存とクリアボタン -->
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         
         <script>
 
             //１口購入金額と口数に応じて合計金額を計算  
-            const hitokuchi = document.querySelector("input[name=hitokuchi]");
-            const kuchisu = document.querySelector("input[name=kuchisu]");
-            const gokei = document.querySelector("input[name=gokei]");
+            const hitokuchi9 = document.querySelector("input[name=hitokuchi9]");
+            const kuchisu9 = document.querySelector("input[name=kuchisu9]");
+            const gokei9 = document.querySelector("input[name=gokei9]");
             const calc = () => {
-                gokei.value = Number(hitokuchi.value) * Number(kuchisu.value);
+                gokei9.value = Number(hitokuchi9.value) * Number(kuchisu9.value);
             }
 
-            hitokuchi.addEventListener("keyup", calc, false);
-            kuchisu.addEventListener("keyup", calc, false);
+            hitokuchi9.addEventListener("keyup", calc, false);
+            kuchisu9.addEventListener("keyup", calc, false);
 
             $('input[name="atari"]').on('change', function () {
                 // 配当金と1口購入金額の値を取得
 
-                let haitokin = $('#prize').val();
-                let hitokuchi = $('#betmoney').val();
+                let haitokin9 = $('#prize9').val();
+                let hitokuchi9 = $('#betmoney9').val();
 
                 if ($(this).attr('id') === 'win') {
                     // 払い戻し金の計算と表示
-                    let harai = haitokin * hitokuchi / 100;
-                    $('#getmoney').val(harai);
+                    let harai9 = haitokin9 * hitokuchi9 / 100;
+                    $('#getmoney9').val(harai9);
                 }
                 else {
                     // ハズレの場合は払い戻し金に0を表示
-                    $('#getmoney').val('0');
+                    $('#getmoney9').val('0');
                 }
             });
 
-
-
-
-
             /**
-           * 数値の3桁カンマ区切り
+           * 数値の9桁カンマ区切り
            * 入力値をカンマ区切りにして返却
           * [引数]   numVal: 入力数値
           * [返却値] String(): カンマ区切りされた文字列
@@ -131,11 +129,11 @@
                     return numVal;
                 }
                 // 整数部分と小数部分に分割
-                var getmoney = numVal.toString().split('.');
-                // 整数部分を3桁カンマ区切りへ
-                getmoney[0] = Number(getmoney[0]).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                var getmoney9 = numVal.toString().split('.');
+                // 整数部分を9桁カンマ区切りへ
+                getmoney9[0] = Number(getmoney9[0]).toString().replace(/\B(?=(\d{9})+(?!\d))/g, ',');
                 // 小数部分と結合して返却
-                return getmoney.join('.');
+                return getmoney9.join('.');
             }
 
             /**
@@ -170,35 +168,91 @@
              * onBlur : カンマ区切り処理実施
              * onFocus : カンマ削除処理実施
              */
-            var elm = document.getElementById('getmoney');
+            var elm = document.getElementById('getmoney9');
             elm.addEventListener('blur', function () { this.value = addFigure(this.value) }, false);
             elm.addEventListener('focus', function () { this.value = delFigure(this.value) }, false);
 
-            // ここからチャッピー
+
+            // 払戻金の計算
 
             $(document).ready(function () {
                 $('input[name="atari"]').on('change', function () {
                     // 払い戻し金の計算と表示
-                    let haitokin = parseFloat($('#prize').val());
-                    let hitokuchi = parseFloat($('#betmoney').val());
-                    let getmoney = parseFloat($('#getmoney').val());
-                    let toatlmoney = parseFloat($('#toatlmoney').val());
+                    let haitokin9 = parseFloat($('#prize9').val());
+                    let hitokuchi9 = parseFloat($('#betmoney9').val());
+                    let getmoney9 = parseFloat($('#getmoney9').val());
+                    let toatlmoney9 = parseFloat($('#toatlmoney9').val());
 
                     if ($(this).attr('id') === 'win') {
                         // 払い戻し金の計算と表示
-                        let harai = haitokin * hitokuchi / 100;
-                        $('#getmoney').val(harai);
+                        let harai9 = haitokin9 * hitokuchi9 / 100;
+                        $('#getmoney9').val(harai9);
                     } else {
                         // ハズレの場合は払い戻し金に0を表示
-                        $('#getmoney').val('0');
+                        $('#getmoney9').val('0');
                     }
 
                     // 収支金額の計算と表示
-                    let balance = getmoney - toatlmoney;
-                    $('#balance').val(balance);
+                    let balance9 = getmoney9 - toatlmoney9;
+                    $('#balance9').val(balance9);
                 });
             });
 
+
+            // 保存
+            $('#save').on('click', function () {
+                const prize9 = $('#prize9').val();
+                const betmoney9 = $('#betmoney9').val();
+                const betnumber9 = $('#betnumber9').val();
+                const toatlmoney9 = $('#toatlmoney9').val();
+                const getmoney9 = $('#getmoney9').val();
+                const balance9 = $('#balance9').val();
+                const lookback9 = $('#lookback9').val();
+                const data9 = {
+                    haitokin9: prize9,
+                    kakekin9: betmoney9,
+                    kuchisu9: betnumber9,
+                    gokei9: toatlmoney9,
+                    harai9: getmoney9,
+                    syushi9: balance9,
+                    hansei9: lookback9,
+
+                };
+                console.log(data9)
+                const json9 = JSON.stringify(data9);
+                console.log(json9);
+                localStorage.setItem('memo9', json9)
+            });
+
+            // クリア
+
+            $('#clear').on('click', function () {
+                localStorage.removeItem('memo9');
+
+                $('#prize9').val('');
+                $('#betmoney9').val('');
+                $('#betnumber9').val('');
+                $('#toatlmoney9').val('');
+                $('#getmoney9').val('');
+                $('#balance9').val('');
+                $('#lookback9').val('');
+            });
+
+            // 取り出す
+            if (localStorage.getItem('memo9')) {
+                const json9 = localStorage.getItem('memo9');
+                console.log(json9);
+                const data9 = JSON.parse(json9);
+                console.log(data9);
+
+                $('#prize9').val(data9.haitokin9);
+                $('#betmoney9').val(data9.kakekin9);
+                $('#betnumber9').val(data9.kuchisu9);
+                $('#toatlmoney9').val(data9.gokei9);
+                $('#getmoney9').val(data9.harai9);
+                $('#balance9').val(data9.syushi9);
+                $('#lookback9').val(data9.hansei9);
+            };
 
         </script>
         

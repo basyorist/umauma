@@ -1,12 +1,57 @@
 @charset "utf-8";
-.title{
-    margin: 0;
-    padding: 0 40px;
+
+.title {
+    margin: auto;
+    padding: 0 50px;
     background-color: #068e0f;
     color: rgb(252, 250, 251);
-    font-family:'Nico Moji','Yu Gothic', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size:120px;
+    font-family: 'Nico Moji', 'Yu Gothic', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 120px;
     width: auto;
     height: auto;
 }
 
+body {
+    margin: 0;
+
+    background-color: #fbe3af;
+}
+
+
+
+.form_title{
+    font-size: 100px;
+    font-weight: bold;
+    padding-left: 50px;
+}
+
+.form-parts{
+    
+        width: 1000px;
+        height: 100px;
+        border: solid 8px rgb(87, 113, 97);
+        padding: 20px;
+        appearance: none;
+        font-size: 100px;
+    }
+
+.yen{
+    margin-left: 40px;
+    font-size: 100px;
+    margin-top:70px
+    
+}
+
+.form-mawari{
+    margin-top: 40px;
+    margin-left:120px;
+}
+
+.formpp{
+    
+display: flex;
+}
+
+.img{
+    
+}

@@ -28,8 +28,6 @@
         <div class="width">
             <form action="form-wrap">
                 <dl class="form_inner">
-                    
-                    
                     <!-- 配当金入力 -->
                     <dt class="form_title">配当金</dt>
                     <dd class="form-item"><input type="text" name="haitokin" id="prize" class="form-parts"></dd>
@@ -42,15 +40,16 @@
                     <!-- トータル賭け金入力 -->
                     <dt class="form_title">合計金額</dt>
                     <dd class="form-item"><input type="text" name="gokei" id="toatlmoney" class="form-parts"></dd>
-                
+        
                     <!-- 勝敗 -->
                     <dt class="form_title">結果</dt>
                     <dd class="form-item" class="radio">
-                        <label for="win" class="pochi"><input type="radio" name="atari" id="win" value="win" style="transform: scale(3.0);">
+                        <label for="win" class="pochi"><input type="radio" name="atari" id="win" value="win"
+                                style="transform: scale(3.0);">
                             的中</label>
                         <label for="lose" class="pochi"><input type="radio" name="atari" id="lose" value="lose"
                                 style="transform: scale(3.0);"> ハズレ</label>
-                    
+        
                     </dd>
                     <!-- ゲットした金額 -->
                     <dt class="form_title">払い戻し金</dt>
@@ -62,20 +61,23 @@
                     <dt class="form_title">反省点</dt>
                     <dd class="form-item"><textarea name="hansei" id="lookback" cols="10" rows="5"
                             class="form-parts"></textarea></dd>
-
+        
                 </dl>
-
-
             </form>
-
-
+        
+        
         </div>
+        <!-- セーブ、クリア、ホームボタン -->
         <div class="btn">
-            <button class="btn1" onclick="location.href='memo1.html'">帰 厩 する</button>
+            <button class="btn1" id="save">セーブ</button>
+            <button class="btn1" id="clear">クリア</button>
+            <button class="btn1" onclick="location.href='memo1.html'">ホーム </button>
         </div>
-
+        
+        <!-- 保存とクリアボタン -->
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
+        
         <script>
 
             //１口購入金額と口数に応じて合計金額を計算  
@@ -89,7 +91,7 @@
             hitokuchi.addEventListener("keyup", calc, false);
             kuchisu.addEventListener("keyup", calc, false);
 
-           $('input[name="atari"]').on('change', function () {
+            $('input[name="atari"]').on('change', function () {
                 // 配当金と1口購入金額の値を取得
 
                 let haitokin = $('#prize').val();
@@ -105,10 +107,6 @@
                     $('#getmoney').val('0');
                 }
             });
-          
-
- 
-           
 
             /**
            * 数値の3桁カンマ区切り
@@ -171,34 +169,90 @@
             elm.addEventListener('blur', function () { this.value = addFigure(this.value) }, false);
             elm.addEventListener('focus', function () { this.value = delFigure(this.value) }, false);
 
-            // ここからチャッピー
 
-            $(document).ready(function() {
-  $('input[name="atari"]').on('change', function() {
-    // 払い戻し金の計算と表示
-    let haitokin = parseFloat($('#prize').val());
-    let hitokuchi = parseFloat($('#betmoney').val());
-    let getmoney = parseFloat($('#getmoney').val());
-    let toatlmoney = parseFloat($('#toatlmoney').val());
+            // 払戻金の計算
 
-    if ($(this).attr('id') === 'win') {
-      // 払い戻し金の計算と表示
-      let harai = haitokin * hitokuchi / 100;
-      $('#getmoney').val(harai);
-    } else {
-      // ハズレの場合は払い戻し金に0を表示
-      $('#getmoney').val('0');
-    }
+            $(document).ready(function () {
+                $('input[name="atari"]').on('change', function () {
+                    // 払い戻し金の計算と表示
+                    let haitokin = parseFloat($('#prize').val());
+                    let hitokuchi = parseFloat($('#betmoney').val());
+                    let getmoney = parseFloat($('#getmoney').val());
+                    let toatlmoney = parseFloat($('#toatlmoney').val());
 
-    // 収支金額の計算と表示
-    let balance = getmoney - toatlmoney;
-    $('#balance').val(balance);
-  });
-});
+                    if ($(this).attr('id') === 'win') {
+                        // 払い戻し金の計算と表示
+                        let harai = haitokin * hitokuchi / 100;
+                        $('#getmoney').val(harai);
+                    } else {
+                        // ハズレの場合は払い戻し金に0を表示
+                        $('#getmoney').val('0');
+                    }
 
-            
+                    // 収支金額の計算と表示
+                    let balance = getmoney - toatlmoney;
+                    $('#balance').val(balance);
+                });
+            });
+
+
+            // 保存
+            $('#save').on('click', function () {
+                const prize = $('#prize').val();
+                const betmoney = $('#betmoney').val();
+                const betnumber = $('#betnumber').val();
+                const toatlmoney = $('#toatlmoney').val();
+                const getmoney = $('#getmoney').val();
+                const balance = $('#balance').val();
+                const lookback = $('#lookback').val();
+                const data = {
+                    haitokin: prize,
+                    kakekin: betmoney,
+                    kuchisu: betnumber,
+                    gokei: toatlmoney,
+                    harai: getmoney,
+                    syushi: balance,
+                    hansei: lookback,
+
+                };
+                console.log(data)
+                const json = JSON.stringify(data);
+                console.log(json);
+                localStorage.setItem('memo', json)
+            });
+
+            // クリア
+
+            $('#clear').on('click', function () {
+                localStorage.removeItem('memo');
+
+                $('#prize').val('');
+                $('#betmoney').val('');
+                $('#betnumber').val('');
+                $('#toatlmoney').val('');
+                $('#getmoney').val('');
+                $('#balance').val('');
+                $('#lookback').val('');
+            });
+
+            // 取り出す
+            if (localStorage.getItem('memo')) {
+                const json = localStorage.getItem('memo');
+                console.log(json);
+                const data = JSON.parse(json);
+                console.log(data);
+
+                $('#prize').val(data.haitokin);
+                $('#betmoney').val(data.kakekin);
+                $('#betnumber').val(data.kuchisu);
+                $('#toatlmoney').val(data.gokei);
+                $('#getmoney').val(data.harai);
+                $('#balance').val(data.syushi);
+                $('#lookback').val(data.hansei);
+            };
+
         </script>
-
-    </main>
-
-</body>
+        
+        </main>
+        
+        </body>
