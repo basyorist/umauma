@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style3.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- <link rel="stylesheet" href="reset.css"> -->
-    
+
     <title>2023うまうま回収率</title>
 </head>
 
@@ -17,37 +17,75 @@
         <h1 class="title">
             年間成績
         </h1>
-       
+
     </header>
 
 
     <main>
-    <div>
+        <div>
 
-    <form>
-    <dl class="form_syushi">
-      
-        <dt class="form_title">年間収支</dt>
-        <div class="formpp">
-            <dd class="form-mawari"><input type="text" name="haitokin" id="nenkan_syushi" class="form-parts"></dd><p class="yen">円</p>
-        </div>
-    </dl>
-    </form>
+            <form>
+                <dl class="form_syushi">
 
-    <dl class="form_syushi">
-    
-        <dt class="form_title">年間回収率</dt>
-        <div class="formpp">
-            <dd class="form-mawari"><input type="text" name="haitokin" id="nenkan_syushi" class="form-parts"></dd>
-            <p class="yen">％</p>
-        </div>
-    </dl>
-    </form>
-    <!-- <div class="img">
+                    <dt class="form_title">年間収支</dt>
+                    <div class="formpp">
+                        <dd class="form-mawari"><input type="text" name="haitokin" id="nenkan_syushi"
+                                class="form-parts"></dd>
+                        <p class="yen">円</p>
+                    </div>
+                </dl>
+            </form>
+
+            <dl class="form_syushi">
+
+                <dt class="form_title">年間回収率</dt>
+                <div class="formpp">
+                    <dd class="form-mawari"><input type="text" name="haitokin" id="nenkan_kaisyu" class="form-parts">
+                    </dd>
+                    <p class="yen">％</p>
+                </div>
+            </dl>
+            </form>
+
+
+            <!-- <div class="img">
     <img src="img/syushigazo.png">
     </div>
     </main> -->
+            <script>
+                if (localStorage.getItem('memo'), localStorage.getItem('memo2')) {
+                    const json = localStorage.getItem('memo');
+                    console.log(json);
+                    const data = JSON.parse(json);
+                    console.log(data);
 
+                    const json2 = localStorage.getItem('memo2');
+                    console.log(json2);
+                    const data2 = JSON.parse(json2);
+                    console.log(data2);
+
+                    $('#nenkan_syushi').val(Number(data.haitokin) + Number(data2.haitokin2));
+
+
+                };
+
+                if (localStorage.getItem('memo2')) {
+                    const json2 = localStorage.getItem('memo2');
+                    console.log(json2);
+                    const data2 = JSON.parse(json2);
+                    console.log(data2);
+
+                    $('#prize2').val(data2.haitokin2);
+                    $('#betmoney2').val(data2.kakekin2);
+                    $('#betnumber2').val(data2.kuchisu2);
+                    $('#toatlmoney2').val(data2.gokei2);
+                    $('#getmoney2').val(data2.harai2);
+                    $('#balance2').val(data2.syushi2);
+                    $('#lookback2').val(data2.hansei2);
+                };
+
+
+
+
+            </script>
 </body>
-
-
