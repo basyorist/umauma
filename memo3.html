@@ -48,12 +48,8 @@
             </form>
 
 
-            <!-- <div class="img">
-    <img src="img/syushigazo.png">
-    </div>
-    </main> -->
             <script>
-                if (localStorage.getItem('memo'), localStorage.getItem('memo2')) {
+                if (localStorage.getItem('memo') && localStorage.getItem('memo2')) {
                     const json = localStorage.getItem('memo');
                     console.log(json);
                     const data = JSON.parse(json);
@@ -64,28 +60,11 @@
                     const data2 = JSON.parse(json2);
                     console.log(data2);
 
-                    $('#nenkan_syushi').val(Number(data.haitokin) + Number(data2.haitokin2));
 
+                    
+                    $('#nenkan_syushi').val(data.haitokin) + (data2.haitokin2);
+                   
 
                 };
-
-                if (localStorage.getItem('memo2')) {
-                    const json2 = localStorage.getItem('memo2');
-                    console.log(json2);
-                    const data2 = JSON.parse(json2);
-                    console.log(data2);
-
-                    $('#prize2').val(data2.haitokin2);
-                    $('#betmoney2').val(data2.kakekin2);
-                    $('#betnumber2').val(data2.kuchisu2);
-                    $('#toatlmoney2').val(data2.gokei2);
-                    $('#getmoney2').val(data2.harai2);
-                    $('#balance2').val(data2.syushi2);
-                    $('#lookback2').val(data2.hansei2);
-                };
-
-
-
-
             </script>
 </body>

@@ -21,7 +21,7 @@
         <div class="btn">
             <div>
                 <button class="btn1"
-                    onclick="location.href='https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202301081120230219/53'">レース結果</button>
+                    onclick="location.href='https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde10052023010811202302123/53'">レース結果</button>
             </div>
 
 
@@ -31,20 +31,18 @@
 <div class="width">
     <form action="form-wrap">
         <dl class="form_inner">
-
-
             <!-- 配当金入力 -->
             <dt class="form_title">配当金</dt>
-            <dd class="form-item"><input type="text" name="haitokin" id="prize" class="form-parts"></dd>
+            <dd class="form-item"><input type="text" name="haitokin23" id="prize23" class="form-parts"></dd>
             <!-- 一口あたりの金額入力 -->
             <dt class="form_title">１口購入金額</dt>
-            <dd class="form-item"><input type="text" name="hitokuchi" id="betmoney" class="form-parts"></dd>
+            <dd class="form-item"><input type="text" name="hitokuchi23" id="betmoney23" class="form-parts"></dd>
             <!-- 口数の入力 -->
             <dt class="form_title">口数</dt>
-            <dd class="form-item"><input type="text" name="kuchisu" id="betnumber" class="form-parts"></dd>
+            <dd class="form-item"><input type="text" name="kuchisu23" id="betnumber23" class="form-parts"></dd>
             <!-- トータル賭け金入力 -->
             <dt class="form_title">合計金額</dt>
-            <dd class="form-item"><input type="text" name="gokei" id="toatlmoney" class="form-parts"></dd>
+            <dd class="form-item"><input type="text" name="gokei23" id="toatlmoney23" class="form-parts"></dd>
 
             <!-- 勝敗 -->
             <dt class="form_title">結果</dt>
@@ -58,64 +56,64 @@
             </dd>
             <!-- ゲットした金額 -->
             <dt class="form_title">払い戻し金</dt>
-            <dd class="form-item"><input type="text" name="harai" id="getmoney" class="form-parts"></dd>
+            <dd class="form-item"><input type="text" name="harai23" id="getmoney23" class="form-parts"></dd>
             <!-- 収支金額 -->
             <dt class="form_title">該当レース収支</dt>
-            <dd class="form-item"><input type="text" name="syushi" id="balance" class="form-parts"></dd>
+            <dd class="form-item"><input type="text" name="syushi23" id="balance23" class="form-parts"></dd>
             <!-- 反省点入力 -->
             <dt class="form_title">反省点</dt>
-            <dd class="form-item"><textarea name="hansei" id="lookback" cols="10" rows="5"
+            <dd class="form-item"><textarea name="hansei23" id="lookback23" cols="10" rows="5"
                     class="form-parts"></textarea></dd>
 
         </dl>
-
-
     </form>
 
 
 </div>
-<div class="btn">
-    <button class="btn1" onclick="location.href='memo1.html'">帰 厩 する</button>
 </div>
+<!-- セーブ、クリア、ホームボタン -->
+<div class="btn">
+    <button class="btn1" id="save">セーブ</button>
+    <button class="btn1" id="clear">クリア</button>
+    <button class="btn1" onclick="location.href='memo1.html'">ホーム </button>
+</div>
+
+<!-- 保存とクリアボタン -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 <script>
 
     //１口購入金額と口数に応じて合計金額を計算  
-    const hitokuchi = document.querySelector("input[name=hitokuchi]");
-    const kuchisu = document.querySelector("input[name=kuchisu]");
-    const gokei = document.querySelector("input[name=gokei]");
+    const hitokuchi23 = document.querySelector("input[name=hitokuchi23]");
+    const kuchisu23 = document.querySelector("input[name=kuchisu23]");
+    const gokei23 = document.querySelector("input[name=gokei23]");
     const calc = () => {
-        gokei.value = Number(hitokuchi.value) * Number(kuchisu.value);
+        gokei23.value = Number(hitokuchi23.value) * Number(kuchisu23.value);
     }
 
-    hitokuchi.addEventListener("keyup", calc, false);
-    kuchisu.addEventListener("keyup", calc, false);
+    hitokuchi23.addEventListener("keyup", calc, false);
+    kuchisu23.addEventListener("keyup", calc, false);
 
     $('input[name="atari"]').on('change', function () {
         // 配当金と1口購入金額の値を取得
 
-        let haitokin = $('#prize').val();
-        let hitokuchi = $('#betmoney').val();
+        let haitokin23 = $('#prize23').val();
+        let hitokuchi23 = $('#betmoney23').val();
 
         if ($(this).attr('id') === 'win') {
             // 払い戻し金の計算と表示
-            let harai = haitokin * hitokuchi / 100;
-            $('#getmoney').val(harai);
+            let harai23 = haitokin23 * hitokuchi23 / 100;
+            $('#getmoney23').val(harai23);
         }
         else {
             // ハズレの場合は払い戻し金に0を表示
-            $('#getmoney').val('0');
+            $('#getmoney23').val('0');
         }
     });
 
-
-
-
-
     /**
-   * 数値の3桁カンマ区切り
+   * 数値の23桁カンマ区切り
    * 入力値をカンマ区切りにして返却
   * [引数]   numVal: 入力数値
   * [返却値] String(): カンマ区切りされた文字列
@@ -132,11 +130,11 @@
             return numVal;
         }
         // 整数部分と小数部分に分割
-        var getmoney = numVal.toString().split('.');
-        // 整数部分を3桁カンマ区切りへ
-        getmoney[0] = Number(getmoney[0]).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        var getmoney23 = numVal.toString().split('.');
+        // 整数部分を23桁カンマ区切りへ
+        getmoney23[0] = Number(getmoney23[0]).toString().replace(/\B(?=(\d{23})+(?!\d))/g, ',');
         // 小数部分と結合して返却
-        return getmoney.join('.');
+        return getmoney23.join('.');
     }
 
     /**
@@ -171,35 +169,91 @@
      * onBlur : カンマ区切り処理実施
      * onFocus : カンマ削除処理実施
      */
-    var elm = document.getElementById('getmoney');
+    var elm = document.getElementById('getmoney23');
     elm.addEventListener('blur', function () { this.value = addFigure(this.value) }, false);
     elm.addEventListener('focus', function () { this.value = delFigure(this.value) }, false);
 
-    // ここからチャッピー
+
+    // 払戻金の計算
 
     $(document).ready(function () {
         $('input[name="atari"]').on('change', function () {
             // 払い戻し金の計算と表示
-            let haitokin = parseFloat($('#prize').val());
-            let hitokuchi = parseFloat($('#betmoney').val());
-            let getmoney = parseFloat($('#getmoney').val());
-            let toatlmoney = parseFloat($('#toatlmoney').val());
+            let haitokin23 = parseFloat($('#prize23').val());
+            let hitokuchi23 = parseFloat($('#betmoney23').val());
+            let getmoney23 = parseFloat($('#getmoney23').val());
+            let toatlmoney23 = parseFloat($('#toatlmoney23').val());
 
             if ($(this).attr('id') === 'win') {
                 // 払い戻し金の計算と表示
-                let harai = haitokin * hitokuchi / 100;
-                $('#getmoney').val(harai);
+                let harai23 = haitokin23 * hitokuchi23 / 100;
+                $('#getmoney23').val(harai23);
             } else {
                 // ハズレの場合は払い戻し金に0を表示
-                $('#getmoney').val('0');
+                $('#getmoney23').val('0');
             }
 
             // 収支金額の計算と表示
-            let balance = getmoney - toatlmoney;
-            $('#balance').val(balance);
+            let balance23 = getmoney23 - toatlmoney23;
+            $('#balance23').val(balance23);
         });
     });
 
+
+    // 保存
+    $('#save').on('click', function () {
+        const prize23 = $('#prize23').val();
+        const betmoney23 = $('#betmoney23').val();
+        const betnumber23 = $('#betnumber23').val();
+        const toatlmoney23 = $('#toatlmoney23').val();
+        const getmoney23 = $('#getmoney23').val();
+        const balance23 = $('#balance23').val();
+        const lookback23 = $('#lookback23').val();
+        const data23 = {
+            haitokin23: prize23,
+            kakekin23: betmoney23,
+            kuchisu23: betnumber23,
+            gokei23: toatlmoney23,
+            harai23: getmoney23,
+            syushi23: balance23,
+            hansei23: lookback23,
+
+        };
+        console.log(data23)
+        const json23 = JSON.stringify(data23);
+        console.log(json23);
+        localStorage.setItem('memo23', json23)
+    });
+
+    // クリア
+
+    $('#clear').on('click', function () {
+        localStorage.removeItem('memo23');
+
+        $('#prize23').val('');
+        $('#betmoney23').val('');
+        $('#betnumber23').val('');
+        $('#toatlmoney23').val('');
+        $('#getmoney23').val('');
+        $('#balance23').val('');
+        $('#lookback23').val('');
+    });
+
+    // 取り出す
+    if (localStorage.getItem('memo23')) {
+        const json23 = localStorage.getItem('memo23');
+        console.log(json23);
+        const data23 = JSON.parse(json23);
+        console.log(data23);
+
+        $('#prize23').val(data23.haitokin23);
+        $('#betmoney23').val(data23.kakekin23);
+        $('#betnumber23').val(data23.kuchisu23);
+        $('#toatlmoney23').val(data23.gokei23);
+        $('#getmoney23').val(data23.harai23);
+        $('#balance23').val(data23.syushi23);
+        $('#lookback23').val(data23.hansei23);
+    };
 
 </script>
 

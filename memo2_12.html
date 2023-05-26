@@ -21,188 +21,242 @@
         <div class="btn">
             <div>
                 <button class="btn1"
-                    onclick="location.href='https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202301081120230219/53'">レース結果</button>
+                    onclick="location.href='https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde10052023010811202302112/53'">レース結果</button>
             </div>
 
 
 
         </div>
-        <!-- フォーム -->
-        <div class="width">
-            <form action="form-wrap">
-                <dl class="form_inner">
-        
-        
-                    <!-- 配当金入力 -->
-                    <dt class="form_title">配当金</dt>
-                    <dd class="form-item"><input type="text" name="haitokin" id="prize" class="form-parts"></dd>
-                    <!-- 一口あたりの金額入力 -->
-                    <dt class="form_title">１口購入金額</dt>
-                    <dd class="form-item"><input type="text" name="hitokuchi" id="betmoney" class="form-parts"></dd>
-                    <!-- 口数の入力 -->
-                    <dt class="form_title">口数</dt>
-                    <dd class="form-item"><input type="text" name="kuchisu" id="betnumber" class="form-parts"></dd>
-                    <!-- トータル賭け金入力 -->
-                    <dt class="form_title">合計金額</dt>
-                    <dd class="form-item"><input type="text" name="gokei" id="toatlmoney" class="form-parts"></dd>
-        
-                    <!-- 勝敗 -->
-                    <dt class="form_title">結果</dt>
-                    <dd class="form-item" class="radio">
-                        <label for="win" class="pochi"><input type="radio" name="atari" id="win" value="win"
-                                style="transform: scale(3.0);">
-                            的中</label>
-                        <label for="lose" class="pochi"><input type="radio" name="atari" id="lose" value="lose"
-                                style="transform: scale(3.0);"> ハズレ</label>
-        
-                    </dd>
-                    <!-- ゲットした金額 -->
-                    <dt class="form_title">払い戻し金</dt>
-                    <dd class="form-item"><input type="text" name="harai" id="getmoney" class="form-parts"></dd>
-                    <!-- 収支金額 -->
-                    <dt class="form_title">該当レース収支</dt>
-                    <dd class="form-item"><input type="text" name="syushi" id="balance" class="form-parts"></dd>
-                    <!-- 反省点入力 -->
-                    <dt class="form_title">反省点</dt>
-                    <dd class="form-item"><textarea name="hansei" id="lookback" cols="10" rows="5"
-                            class="form-parts"></textarea></dd>
-        
-                </dl>
-        
-        
-            </form>
-        
-        
-        </div>
-        <div class="btn">
-            <button class="btn1" onclick="location.href='memo1.html'">帰 厩 する</button>
-        </div>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        
-        <script>
+                <!-- フォーム -->
+                <div class="width">
+                    <form action="form-wrap">
+                        <dl class="form_inner">
+                            <!-- 配当金入力 -->
+                            <dt class="form_title">配当金</dt>
+                            <dd class="form-item"><input type="text" name="haitokin12" id="prize12" class="form-parts"></dd>
+                            <!-- 一口あたりの金額入力 -->
+                            <dt class="form_title">１口購入金額</dt>
+                            <dd class="form-item"><input type="text" name="hitokuchi12" id="betmoney12" class="form-parts"></dd>
+                            <!-- 口数の入力 -->
+                            <dt class="form_title">口数</dt>
+                            <dd class="form-item"><input type="text" name="kuchisu12" id="betnumber12" class="form-parts"></dd>
+                            <!-- トータル賭け金入力 -->
+                            <dt class="form_title">合計金額</dt>
+                            <dd class="form-item"><input type="text" name="gokei12" id="toatlmoney12" class="form-parts"></dd>
+                
+                            <!-- 勝敗 -->
+                            <dt class="form_title">結果</dt>
+                            <dd class="form-item" class="radio">
+                                <label for="win" class="pochi"><input type="radio" name="atari" id="win" value="win"
+                                        style="transform: scale(3.0);">
+                                    的中</label>
+                                <label for="lose" class="pochi"><input type="radio" name="atari" id="lose" value="lose"
+                                        style="transform: scale(3.0);"> ハズレ</label>
+                
+                            </dd>
+                            <!-- ゲットした金額 -->
+                            <dt class="form_title">払い戻し金</dt>
+                            <dd class="form-item"><input type="text" name="harai12" id="getmoney12" class="form-parts"></dd>
+                            <!-- 収支金額 -->
+                            <dt class="form_title">該当レース収支</dt>
+                            <dd class="form-item"><input type="text" name="syushi12" id="balance12" class="form-parts"></dd>
+                            <!-- 反省点入力 -->
+                            <dt class="form_title">反省点</dt>
+                            <dd class="form-item"><textarea name="hansei12" id="lookback12" cols="10" rows="5"
+                                    class="form-parts"></textarea></dd>
+                
+                        </dl>
+                    </form>
+                
+                
+                </div>
+                </div>
+                <!-- セーブ、クリア、ホームボタン -->
+                <div class="btn">
+                    <button class="btn1" id="save">セーブ</button>
+                    <button class="btn1" id="clear">クリア</button>
+                    <button class="btn1" onclick="location.href='memo1.html'">ホーム </button>
+                </div>
+                
+                <!-- 保存とクリアボタン -->
+                
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+                
+                <script>
 
-            //１口購入金額と口数に応じて合計金額を計算  
-            const hitokuchi = document.querySelector("input[name=hitokuchi]");
-            const kuchisu = document.querySelector("input[name=kuchisu]");
-            const gokei = document.querySelector("input[name=gokei]");
-            const calc = () => {
-                gokei.value = Number(hitokuchi.value) * Number(kuchisu.value);
-            }
-
-            hitokuchi.addEventListener("keyup", calc, false);
-            kuchisu.addEventListener("keyup", calc, false);
-
-            $('input[name="atari"]').on('change', function () {
-                // 配当金と1口購入金額の値を取得
-
-                let haitokin = $('#prize').val();
-                let hitokuchi = $('#betmoney').val();
-
-                if ($(this).attr('id') === 'win') {
-                    // 払い戻し金の計算と表示
-                    let harai = haitokin * hitokuchi / 100;
-                    $('#getmoney').val(harai);
-                }
-                else {
-                    // ハズレの場合は払い戻し金に0を表示
-                    $('#getmoney').val('0');
-                }
-            });
-
-
-
-
-
-            /**
-           * 数値の3桁カンマ区切り
-           * 入力値をカンマ区切りにして返却
-          * [引数]   numVal: 入力数値
-          * [返却値] String(): カンマ区切りされた文字列
-           */
-            function addFigure(numVal) {
-                // 空の場合そのまま返却
-                if (numVal == '') {
-                    return '';
-                }
-                // 全角から半角へ変換し、既にカンマが入力されていたら事前に削除
-                numVal = toHalfWidth(numVal).replace(/,/g, "").trim();
-                // 数値でなければそのまま返却
-                if (!/^[+|-]?(\d*)(\.\d+)?$/.test(numVal)) {
-                    return numVal;
-                }
-                // 整数部分と小数部分に分割
-                var getmoney = numVal.toString().split('.');
-                // 整数部分を3桁カンマ区切りへ
-                getmoney[0] = Number(getmoney[0]).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-                // 小数部分と結合して返却
-                return getmoney.join('.');
-            }
-
-            /**
-             * カンマ外し
-             * 入力値のカンマを取り除いて返却
-             * [引数]   strVal: 半角でカンマ区切りされた数値
-             * [返却値] String(): カンマを削除した数値
-             */
-            function delFigure(strVal) {
-                return strVal.replace(/,/g, "");
-            }
-
-            /**
-             * 全角から半角への変革関数
-             * 入力値の英数記号を半角変換して返却
-             * [引数]   strVal: 入力値
-             * [返却値] String(): 半角変換された文字列
-             */
-            function toHalfWidth(strVal) {
-                // 半角変換
-                var halfVal = strVal.replace(/[！-～]/g,
-                    function (tmpStr) {
-                        // 文字コードをシフト
-                        return String.fromCharCode(tmpStr.charCodeAt(0) - 0xFEE0);
-                    }
-                );
-                return halfVal;
-            }
-
-            /** 
-             * 処理を適用するテキストボックスへのイベント設定
-             * onBlur : カンマ区切り処理実施
-             * onFocus : カンマ削除処理実施
-             */
-            var elm = document.getElementById('getmoney');
-            elm.addEventListener('blur', function () { this.value = addFigure(this.value) }, false);
-            elm.addEventListener('focus', function () { this.value = delFigure(this.value) }, false);
-
-            // ここからチャッピー
-
-            $(document).ready(function () {
-                $('input[name="atari"]').on('change', function () {
-                    // 払い戻し金の計算と表示
-                    let haitokin = parseFloat($('#prize').val());
-                    let hitokuchi = parseFloat($('#betmoney').val());
-                    let getmoney = parseFloat($('#getmoney').val());
-                    let toatlmoney = parseFloat($('#toatlmoney').val());
-
-                    if ($(this).attr('id') === 'win') {
-                        // 払い戻し金の計算と表示
-                        let harai = haitokin * hitokuchi / 100;
-                        $('#getmoney').val(harai);
-                    } else {
-                        // ハズレの場合は払い戻し金に0を表示
-                        $('#getmoney').val('0');
+                    //１口購入金額と口数に応じて合計金額を計算  
+                    const hitokuchi12 = document.querySelector("input[name=hitokuchi12]");
+                    const kuchisu12 = document.querySelector("input[name=kuchisu12]");
+                    const gokei12 = document.querySelector("input[name=gokei12]");
+                    const calc = () => {
+                        gokei12.value = Number(hitokuchi12.value) * Number(kuchisu12.value);
                     }
 
-                    // 収支金額の計算と表示
-                    let balance = getmoney - toatlmoney;
-                    $('#balance').val(balance);
-                });
-            });
+                    hitokuchi12.addEventListener("keyup", calc, false);
+                    kuchisu12.addEventListener("keyup", calc, false);
+
+                    $('input[name="atari"]').on('change', function () {
+                        // 配当金と1口購入金額の値を取得
+
+                        let haitokin12 = $('#prize12').val();
+                        let hitokuchi12 = $('#betmoney12').val();
+
+                        if ($(this).attr('id') === 'win') {
+                            // 払い戻し金の計算と表示
+                            let harai12 = haitokin12 * hitokuchi12 / 100;
+                            $('#getmoney12').val(harai12);
+                        }
+                        else {
+                            // ハズレの場合は払い戻し金に0を表示
+                            $('#getmoney12').val('0');
+                        }
+                    });
+
+                    /**
+                   * 数値の12桁カンマ区切り
+                   * 入力値をカンマ区切りにして返却
+                  * [引数]   numVal: 入力数値
+                  * [返却値] String(): カンマ区切りされた文字列
+                   */
+                    function addFigure(numVal) {
+                        // 空の場合そのまま返却
+                        if (numVal == '') {
+                            return '';
+                        }
+                        // 全角から半角へ変換し、既にカンマが入力されていたら事前に削除
+                        numVal = toHalfWidth(numVal).replace(/,/g, "").trim();
+                        // 数値でなければそのまま返却
+                        if (!/^[+|-]?(\d*)(\.\d+)?$/.test(numVal)) {
+                            return numVal;
+                        }
+                        // 整数部分と小数部分に分割
+                        var getmoney12 = numVal.toString().split('.');
+                        // 整数部分を12桁カンマ区切りへ
+                        getmoney12[0] = Number(getmoney12[0]).toString().replace(/\B(?=(\d{12})+(?!\d))/g, ',');
+                        // 小数部分と結合して返却
+                        return getmoney12.join('.');
+                    }
+
+                    /**
+                     * カンマ外し
+                     * 入力値のカンマを取り除いて返却
+                     * [引数]   strVal: 半角でカンマ区切りされた数値
+                     * [返却値] String(): カンマを削除した数値
+                     */
+                    function delFigure(strVal) {
+                        return strVal.replace(/,/g, "");
+                    }
+
+                    /**
+                     * 全角から半角への変革関数
+                     * 入力値の英数記号を半角変換して返却
+                     * [引数]   strVal: 入力値
+                     * [返却値] String(): 半角変換された文字列
+                     */
+                    function toHalfWidth(strVal) {
+                        // 半角変換
+                        var halfVal = strVal.replace(/[！-～]/g,
+                            function (tmpStr) {
+                                // 文字コードをシフト
+                                return String.fromCharCode(tmpStr.charCodeAt(0) - 0xFEE0);
+                            }
+                        );
+                        return halfVal;
+                    }
+
+                    /** 
+                     * 処理を適用するテキストボックスへのイベント設定
+                     * onBlur : カンマ区切り処理実施
+                     * onFocus : カンマ削除処理実施
+                     */
+                    var elm = document.getElementById('getmoney12');
+                    elm.addEventListener('blur', function () { this.value = addFigure(this.value) }, false);
+                    elm.addEventListener('focus', function () { this.value = delFigure(this.value) }, false);
 
 
-        </script>
-        
-        </main>
-        
-        </body>
+                    // 払戻金の計算
+
+                    $(document).ready(function () {
+                        $('input[name="atari"]').on('change', function () {
+                            // 払い戻し金の計算と表示
+                            let haitokin12 = parseFloat($('#prize12').val());
+                            let hitokuchi12 = parseFloat($('#betmoney12').val());
+                            let getmoney12 = parseFloat($('#getmoney12').val());
+                            let toatlmoney12 = parseFloat($('#toatlmoney12').val());
+
+                            if ($(this).attr('id') === 'win') {
+                                // 払い戻し金の計算と表示
+                                let harai12 = haitokin12 * hitokuchi12 / 100;
+                                $('#getmoney12').val(harai12);
+                            } else {
+                                // ハズレの場合は払い戻し金に0を表示
+                                $('#getmoney12').val('0');
+                            }
+
+                            // 収支金額の計算と表示
+                            let balance12 = getmoney12 - toatlmoney12;
+                            $('#balance12').val(balance12);
+                        });
+                    });
+
+
+                    // 保存
+                    $('#save').on('click', function () {
+                        const prize12 = $('#prize12').val();
+                        const betmoney12 = $('#betmoney12').val();
+                        const betnumber12 = $('#betnumber12').val();
+                        const toatlmoney12 = $('#toatlmoney12').val();
+                        const getmoney12 = $('#getmoney12').val();
+                        const balance12 = $('#balance12').val();
+                        const lookback12 = $('#lookback12').val();
+                        const data12 = {
+                            haitokin12: prize12,
+                            kakekin12: betmoney12,
+                            kuchisu12: betnumber12,
+                            gokei12: toatlmoney12,
+                            harai12: getmoney12,
+                            syushi12: balance12,
+                            hansei12: lookback12,
+
+                        };
+                        console.log(data12)
+                        const json12 = JSON.stringify(data12);
+                        console.log(json12);
+                        localStorage.setItem('memo12', json12)
+                    });
+
+                    // クリア
+
+                    $('#clear').on('click', function () {
+                        localStorage.removeItem('memo12');
+
+                        $('#prize12').val('');
+                        $('#betmoney12').val('');
+                        $('#betnumber12').val('');
+                        $('#toatlmoney12').val('');
+                        $('#getmoney12').val('');
+                        $('#balance12').val('');
+                        $('#lookback12').val('');
+                    });
+
+                    // 取り出す
+                    if (localStorage.getItem('memo12')) {
+                        const json12 = localStorage.getItem('memo12');
+                        console.log(json12);
+                        const data12 = JSON.parse(json12);
+                        console.log(data12);
+
+                        $('#prize12').val(data12.haitokin12);
+                        $('#betmoney12').val(data12.kakekin12);
+                        $('#betnumber12').val(data12.kuchisu12);
+                        $('#toatlmoney12').val(data12.gokei12);
+                        $('#getmoney12').val(data12.harai12);
+                        $('#balance12').val(data12.syushi12);
+                        $('#lookback12').val(data12.hansei12);
+                    };
+
+                </script>
+                
+                </main>
+                
+                </body>
