@@ -207,7 +207,12 @@
                     console.log(toatlKane);
 
                     // 年間回収率を計算しnenkan_kaisyuのフォームに表示
-                    $('#nenkan_kaisyu').val((toatlHarai / toatlKane * 100).toFixed(2));
+                    // $('#nenkan_kaisyu').val((toatlHarai / toatlKane * 100).toFixed(2));
+                    
+
+                    // チャッピー
+                     const nenkan_kaisyu = (toatlHarai / toatlKane * 100).toFixed(2);
+                    $('#nenkan_kaisyu').val(isNaN(nenkan_kaisyu) ? 0 : nenkan_kaisyu);
 
 
                 };

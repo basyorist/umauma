@@ -33,16 +33,16 @@
                 <dl class="form_inner">
                     <!-- 配当金入力 -->
                     <dt class="form_title">配当金</dt>
-                    <dd class="form-item"><input type="text" name="haitoki18" id="priz18" class="form-parts"></dd>
+                    <dd class="form-item"><input type="text" name="haitokin18" id="prize18" class="form-parts"></dd>
                     <!-- 一口あたりの金額入力 -->
                     <dt class="form_title">１口購入金額</dt>
-                    <dd class="form-item"><input type="text" name="hitokuch18" id="betmone18" class="form-parts"></dd>
+                    <dd class="form-item"><input type="text" name="hitokuchi18" id="betmoney18" class="form-parts"></dd>
                     <!-- 口数の入力 -->
                     <dt class="form_title">口数</dt>
-                    <dd class="form-item"><input type="text" name="kuchis18" id="betnumbe18" class="form-parts"></dd>
+                    <dd class="form-item"><input type="text" name="kuchisu18" id="betnumber18" class="form-parts"></dd>
                     <!-- トータル賭け金入力 -->
                     <dt class="form_title">合計金額</dt>
-                    <dd class="form-item"><input type="text" name="goke18" id="toatlmone18" class="form-parts"></dd>
+                    <dd class="form-item"><input type="text" name="gokei18" id="toatlmoney18" class="form-parts"></dd>
         
                     <!-- 勝敗 -->
                     <dt class="form_title">結果</dt>
@@ -56,13 +56,13 @@
                     </dd>
                     <!-- ゲットした金額 -->
                     <dt class="form_title">払い戻し金</dt>
-                    <dd class="form-item"><input type="text" name="hara18" id="getmone18" class="form-parts"></dd>
+                    <dd class="form-item"><input type="text" name="harai18" id="getmoney18" class="form-parts"></dd>
                     <!-- 収支金額 -->
                     <dt class="form_title">該当レース収支</dt>
-                    <dd class="form-item"><input type="text" name="syush18" id="balanc18" class="form-parts"></dd>
+                    <dd class="form-item"><input type="text" name="syushi18" id="balance18" class="form-parts"></dd>
                     <!-- 反省点入力 -->
                     <dt class="form_title">反省点</dt>
-                    <dd class="form-item"><textarea name="hanse18" id="lookbac18" cols="10" rows="5"
+                    <dd class="form-item"><textarea name="hansei18" id="lookback18" cols="10" rows="5"
                             class="form-parts"></textarea></dd>
         
                 </dl>
@@ -85,30 +85,30 @@
         <script>
 
             //１口購入金額と口数に応じて合計金額を計算  
-            const hitokuch18 = document.querySelector("input[name=hitokuch18]");
-            const kuchis18 = document.querySelector("input[name=kuchis18]");
-            const goke18 = document.querySelector("input[name=goke18]");
+            const hitokuchi18 = document.querySelector("input[name=hitokuchi18]");
+            const kuchisu18 = document.querySelector("input[name=kuchisu18]");
+            const gokei18 = document.querySelector("input[name=gokei18]");
             const calc = () => {
-                goke18.value = Number(hitokuch18.value) * Number(kuchis18.value);
+                gokei18.value = Number(hitokuchi18.value) * Number(kuchisu18.value);
             }
 
-            hitokuch18.addEventListener("keyup", calc, false);
-            kuchis18.addEventListener("keyup", calc, false);
+            hitokuchi18.addEventListener("keyup", calc, false);
+            kuchisu18.addEventListener("keyup", calc, false);
 
             $('input[name="atari"]').on('change', function () {
                 // 配当金と1口購入金額の値を取得
 
-                let haitoki18 = $('#priz18').val();
-                let hitokuch18 = $('#betmone18').val();
+                let haitokin18 = $('#prize18').val();
+                let hitokuchi18 = $('#betmoney18').val();
 
                 if ($(this).attr('id') === 'win') {
                     // 払い戻し金の計算と表示
-                    let hara18 = haitoki18 * hitokuch18 / 100;
-                    $('#getmone18').val(hara18);
+                    let harai18 = haitokin18 * hitokuchi18 / 100;
+                    $('#getmoney18').val(harai18);
                 }
                 else {
                     // ハズレの場合は払い戻し金に0を表示
-                    $('#getmone18').val('0');
+                    $('#getmoney18').val('0');
                 }
             });
 
@@ -130,11 +130,11 @@
                     return numVal;
                 }
                 // 整数部分と小数部分に分割
-                var getmone18 = numVal.toString().split('.');
+                var getmoney18 = numVal.toString().split('.');
                 // 整数部分18桁カンマ区切りへ
-                getmone18[0] = Number(getmone18[0]).toString().replace(/\B(?=(\d18})+(?!\d))/g, ',');
+                getmoney18[0] = Number(getmoney18[0]).toString().replace(/\B(?=(\d18})+(?!\d))/g, ',');
                 // 小数部分と結合して返却
-                return getmone18.join('.');
+                return getmoney18.join('.');
             }
 
             /**
@@ -169,7 +169,7 @@
              * onBlur : カンマ区切り処理実施
              * onFocus : カンマ削除処理実施
              */
-            var elm = document.getElementById('getmone18');
+            var elm = document.getElementById('getmoney18');
             elm.addEventListener('blur', function () { this.value = addFigure(this.value) }, false);
             elm.addEventListener('focus', function () { this.value = delFigure(this.value) }, false);
 
@@ -179,80 +179,80 @@
             $(document).ready(function () {
                 $('input[name="atari"]').on('change', function () {
                     // 払い戻し金の計算と表示
-                    let haitoki18 = parseFloat($('#priz18').val());
-                    let hitokuch18 = parseFloat($('#betmone18').val());
-                    let getmone18 = parseFloat($('#getmone18').val());
-                    let toatlmone18 = parseFloat($('#toatlmone18').val());
+                    let haitokin18 = parseFloat($('#prize18').val());
+                    let hitokuchi18 = parseFloat($('#betmoney18').val());
+                    let getmoney18 = parseFloat($('#getmoney18').val());
+                    let toatlmoney18 = parseFloat($('#toatlmoney18').val());
 
                     if ($(this).attr('id') === 'win') {
                         // 払い戻し金の計算と表示
-                        let hara18 = haitoki18 * hitokuch18 / 100;
-                        $('#getmone18').val(hara18);
+                        let harai18 = haitokin18 * hitokuchi18 / 100;
+                        $('#getmoney18').val(harai18);
                     } else {
                         // ハズレの場合は払い戻し金に0を表示
-                        $('#getmone18').val('0');
+                        $('#getmoney18').val('0');
                     }
 
                     // 収支金額の計算と表示
-                    let balanc18 = getmone18 - toatlmone18;
-                    $('#balanc18').val(balanc18);
+                    let balance18 = getmoney18 - toatlmoney18;
+                    $('#balance18').val(balance18);
                 });
             });
 
 
             // 保存
             $('#save').on('click', function () {
-                const priz18 = $('#priz18').val();
-                const betmone18 = $('#betmone18').val();
-                const betnumbe18 = $('#betnumbe18').val();
-                const toatlmone18 = $('#toatlmone18').val();
-                const getmone18 = $('#getmone18').val();
-                const balanc18 = $('#balanc18').val();
-                const lookbac18 = $('#lookbac18').val();
-                const dat18 = {
-                    haitoki18: priz18,
-                    kakeki18: betmone18,
-                    kuchis18: betnumbe18,
-                    goke18: toatlmone18,
-                    hara18: getmone18,
-                    syush18: balanc18,
-                    hanse18: lookbac18,
+                const prize18 = $('#prize18').val();
+                const betmoney18 = $('#betmoney18').val();
+                const betnumbey18 = $('#betnumber18').val();
+                const toatlmoney18 = $('#toatlmoney18').val();
+                const getmoney18 = $('#getmoney18').val();
+                const balance18 = $('#balance18').val();
+                const lookback18 = $('#lookback18').val();
+                const data18 = {
+                    haitokin18: prize18,
+                    kakekin18: betmoney18,
+                    kuchisu18: betnumber18,
+                    gokei18: toatlmoney18,
+                    harai18: getmoney18,
+                    syushi18: balance18,
+                    hansei18: lookback18,
 
                 };
-                console.log(dat18)
-                const jso18 = JSON.stringify(dat18);
-                console.log(jso18);
-                localStorage.setItem('mem18', jso18)
+                console.log(data18)
+                const json18 = JSON.stringify(data18);
+                console.log(json18);
+                localStorage.setItem('memo18', json18)
             });
 
             // クリア
 
             $('#clear').on('click', function () {
-                localStorage.removeItem('mem18');
+                localStorage.removeItem('memo18');
 
-                $('#priz18').val('');
-                $('#betmone18').val('');
-                $('#betnumbe18').val('');
-                $('#toatlmone18').val('');
-                $('#getmone18').val('');
-                $('#balanc18').val('');
-                $('#lookbac18').val('');
+                $('#prize18').val('');
+                $('#betmoney18').val('');
+                $('#betnumber18').val('');
+                $('#toatlmoney18').val('');
+                $('#getmoney18').val('');
+                $('#balance18').val('');
+                $('#lookback18').val('');
             });
 
             // 取り出す
-            if (localStorage.getItem('mem18')) {
-                const jso18 = localStorage.getItem('mem18');
-                console.log(jso18);
-                const dat18 = JSON.parse(jso18);
-                console.log(dat18);
+            if (localStorage.getItem('memo18')) {
+                const json18 = localStorage.getItem('memo18');
+                console.log(json18);
+                const data18 = JSON.parse(json18);
+                console.log(data18);
 
-                $('#priz18').val(dat18.haitoki18);
-                $('#betmone18').val(dat18.kakeki18);
-                $('#betnumbe18').val(dat18.kuchis18);
-                $('#toatlmone18').val(dat18.goke18);
-                $('#getmone18').val(dat18.hara18);
-                $('#balanc18').val(dat18.syush18);
-                $('#lookbac18').val(dat18.hanse18);
+                $('#prize18').val(data18.haitokin18);
+                $('#betmoney18').val(data18.kakekin18);
+                $('#betnumber18').val(data18.kuchisu18);
+                $('#toatlmoney18').val(data18.gokei18);
+                $('#getmoney18').val(data18.harai18);
+                $('#balance18').val(data18.syushi18);
+                $('#lookback18').val(data18.hansei18);
             };
 
         </script>
